@@ -5,6 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var routesStudents = require('./routes/students');
+var routesApiStudents = require('./routes/api/students');
 var expressLayouts = require('express-ejs-layouts');
 var mongoose = require('mongoose');
 var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/school';
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes
 app.use('/', routes);
 app.use('/students', routesStudents);
+app.use('/api/students', routesApiStudents);
 
 // error handlers
 // catch 404 and forward to error handler
