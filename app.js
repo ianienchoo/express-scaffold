@@ -3,17 +3,14 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
-var routesStudents = require('./routes/students');
-var routesApiStudents = require('./routes/api/students');
 var expressLayouts = require('express-ejs-layouts');
-var mongoose = require('mongoose');
-var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/school';
 
 // app
 var app = express();
 
 // mongoose
+var mongoose = require('mongoose');
+var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/school';
 mongoose.connect(mongoUri);
 
 // view engine setup
@@ -29,6 +26,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
+var routes = require('./routes/index');
+var routesStudents = require('./routes/students');
+var routesApiStudents = require('./routes/api/students');
+
 app.use('/', routes);
 app.use('/students', routesStudents);
 app.use('/api/students', routesApiStudents);
@@ -61,5 +62,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// start
 app.listen(process.env.PORT || 3000 );
-console.log('Server has Awaken...');
+console.log('Server has Awakened...');
