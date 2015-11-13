@@ -1,0 +1,42 @@
+<fieldset>
+  <legend>Add a student</legend>
+  <form method="POST" action="/students">
+    <div class="form-group col-md-4">
+      <input name="student[name]" class="form-control" placeholder="Name"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="student[school]"  class="form-control" placeholder="School"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input type="date" name="student[dob]"  class="form-control" placeholder="Date of Birth"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="student[gender]"  class="form-control" placeholder="Gender(M F)"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="student[tuition]"  class="form-control" placeholder="Tuition"/>
+    </div>
+    <div class="form-group col-md-4">
+      <button class="btn btn-success col-md-12">Add a Student</button>
+    </div>
+  </form>
+</fieldset>
+
+<ul>
+<% students.forEach( function(student){ %>
+  <li>
+    <h2><%= student.name %></h2>
+    <ul>
+      <li><b>Name :  </b> <%= student.name %></li>
+      <li><b>School :    </b> <%= student.school %></li>
+      <li><b>Date of Birth: </b> <%= new Date(student.dob).toDateString() %></li>
+      <li><b>Gender : </b> <%= student.gender %></li>
+      <li><b>Tuition : </b> <%= student.tuition %></li>
+      <li><a href="/students/<%= student.id %>/edit">Edit details</a></li>
+      <li><a href="/students/<%= student.id %>/delete">Delete student</a></li>
+    </ul>
+  </li>
+
+<% }) %>
+
+</ul>

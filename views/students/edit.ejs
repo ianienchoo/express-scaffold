@@ -1,0 +1,23 @@
+<fieldset>
+  <legend>Edit Student Details</legend>
+  <form method="POST" action="/students/<%= student.id %>/update">
+    <div class="form-group col-md-4">
+      <input name="student[name]" class="form-control" placeholder="<%= student.name %>"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="student[school]"  class="form-control" placeholder="<%= student.school %>"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input type="date" name="student[dob]"  class="form-control" placeholder="<%= student.dob %>"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="student[gender]"  class="form-control" placeholder="<%= student.gender %>"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="student[tuition]"  class="form-control" placeholder="<%= student.tuition %>"/>
+    </div>
+    <div class="form-group col-md-4">
+      <button class="btn btn-success col-md-12">Edit Profile</button>
+    </div>
+  </form>
+</fieldset>
